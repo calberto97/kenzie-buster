@@ -1,15 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 
 
-class CustomUserManager(BaseUserManager):
-    def create_superuser(self, email, first_name, last_name, password=None):
-        user = self.create_user(email, first_name, last_name, password)
-        user.is_employee = True
-        user.is_superuser = True
+# class CustomUserManager(BaseUserManager):
+#     def create_superuser(self, email, first_name, last_name, password=None):
+#         user = self.create_user(email, first_name, last_name, password)
+#         user.is_employee = True
+#         user.is_superuser = True
 
-        user.save()
-        return user
+#         user.save()
+#         return user
 
 
 class User(AbstractUser, PermissionsMixin):
@@ -22,5 +26,7 @@ class User(AbstractUser, PermissionsMixin):
     # def create(self, email, first_name, last_name, password=None):
     #     self.is_employee = False
     #     self.is_superuser = False
+    def __repr__(self) -> str:
+        return f"<User ({self.id} - {self.name})>"
 
     pass

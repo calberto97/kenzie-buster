@@ -31,9 +31,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-MY_APPS = ["users"]
+MY_APPS = ["users", "movies"]
 
-THIRD_PARTY_APPS = ["rest_framework"]
+THIRD_PARTY_APPS = ["rest_framework", "rest_framework_simplejwt"]
 
 DEFAULT_APPS = [
     "django.contrib.admin",
@@ -44,9 +44,15 @@ DEFAULT_APPS = [
     "django.contrib.staticfiles",
 ]
 
-INSTALLED_APPS = MY_APPS + THIRD_PARTY_APPS + DEFAULT_APPS
+INSTALLED_APPS = THIRD_PARTY_APPS + MY_APPS + DEFAULT_APPS
 
 AUTH_USER_MODEL = "users.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

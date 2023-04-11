@@ -1,5 +1,3 @@
-from django.db.migrations import serializer
-from django.shortcuts import render
 from rest_framework.request import Request
 from rest_framework.views import APIView, Response, Request
 from .models import User
