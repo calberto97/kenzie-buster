@@ -34,22 +34,7 @@ class MovieOrderSerializer(serializers.Serializer):
         return obj.movie.title
 
     def get_buyed_by(self, obj):
-        # return obj.movie.user.email
         return obj.user.email
 
     def create(self, validated_data) -> MovieOrder:
-        # return MovieOrder.objects.create(
-        #     user=self.user, movie=self.movie, **validated_data
-        # )
         return MovieOrder.objects.create(**validated_data)
-
-    # def title(self):
-    #     return self.title
-
-    # def buyed_by(self):
-    #     return self.buyed_by
-
-    # def buyed_at(self):
-    #     return self.buyed_at
-
-    ...
