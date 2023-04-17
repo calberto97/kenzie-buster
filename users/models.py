@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import (
     AbstractUser,
-    PermissionsMixin,
 )
 
 
-class User(AbstractUser, PermissionsMixin):
+class User(AbstractUser):
     email = models.EmailField(max_length=127, unique=True, null=False)
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
